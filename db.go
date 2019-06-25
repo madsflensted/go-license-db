@@ -75,6 +75,15 @@ func (db database) Length() int {
 	return len(db.licenseTexts)
 }
 
+// List of known license texts/names
+func (db database) LicenseNames() []string {
+	keys := make([]string, 0, len(db.licenseTexts))
+	for k := range db.licenseTexts {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
 // VocabularySize returns the number of unique unigrams.
 func (db database) VocabularySize() int {
 	return len(db.tokens)
